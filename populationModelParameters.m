@@ -2,7 +2,7 @@
 % Calculate the parameters, i.e. the prinicpal components and their
 % variance, as well as the population mean, of a population deformation
 % model.
-% Input parameters:
+% Input arguments:
 %  patientData: struct array containing the point data for all patients.
 %               each element in the array represents one patient, and each
 %               patient must have a set of structures represented by the
@@ -16,7 +16,7 @@
 %               the total number of shapes minus the number of patients.         
 %  
 %
-% Output parameters:
+% Output arguments:
 %  popmean: Population mean shape vector
 %  pcs: Matrix of principal components. Each column represents one principal
 %  component

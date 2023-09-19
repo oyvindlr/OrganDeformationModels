@@ -3,7 +3,7 @@
 % Calculate the parameters, i.e. the prinicpal components and their
 % variance, as well as the patient mean, of a patient-specific deformation
 % model.
-% Input parameters:
+% Input arguments:
 %  data:        cell arraystruct array containing the point data for all
 %               shapes for this patient. Each cell represents an organ 
 %               shape from the patient. The shape is represented by an
@@ -15,7 +15,7 @@
 %               the total number of shapes minus one.         
 %  
 %
-% Output parameters:
+% Output arguments:
 %  avg: Mean shape vector
 %  pcs: Matrix of principal components. Each column represents one principal
 %  component
