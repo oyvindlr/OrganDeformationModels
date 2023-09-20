@@ -18,7 +18,7 @@
 function [pcs, stddev, avg] = pca(dataMatrix, npcs)
 
 m = size(dataMatrix, 2);
-if nargin < 2
+if nargin < 2 || isempty(npcs)
     npcs = m - 1;
 end
 

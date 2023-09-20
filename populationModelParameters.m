@@ -22,8 +22,10 @@
 %  component
 %  standardDev: vector containing the standard deviation of each principal
 %  component. Ordered in descending fashion.
+%  individualMeans: Matrix where each row is the mean vector of one patient
 
-function [popmean, pcs, standardDev] = populationModelParameters(patientData, nComponents)
+function [popmean, pcs, standardDev, individualMeans] = populationModelParameters(patientData, nComponents)
+
 
 
 [popmean, individualMeans] = computePatientMeans(patientData);
@@ -53,7 +55,7 @@ end
 
 S = diag(S);
 
-if nargin < 2
+if nargin < 2 || isempty(nComponents)
     nComponents = size(fullMat, 1) - npatients;
 end
 %Remove excess modes

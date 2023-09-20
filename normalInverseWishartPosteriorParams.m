@@ -1,6 +1,8 @@
 function [patmean, pcs, stddev] = normalInverseWishartPosteriorParams(patientData,popmean, pcs, stddev, kappa, nu)
 %NORMALINVERSEWISHARTPOSTERIORPARAMS Get the point estimates for the
 %posterior distribution of a normal inverse gamma model
+%
+%function [patmean, pcs, stddev] = normalInverseWishartPosteriorParams(patientData,popmean, pcs, stddev, kappa, nu)
 % Input arguments:
 %   patientData: Array of vectorized coordinates of organ shapes for the
 %                patient, or cell array of non-vectorized coordinate

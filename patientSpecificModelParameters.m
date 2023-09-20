@@ -24,14 +24,15 @@
 
 function [avg, pcs, stddev] = patientSpecificModelParameters(data, npcs)
 
+if nargin < 2
+    npcs = [];
+end
 dataMat = zeros(size(data{1}, 1)*3, size(data));
 for i = 1:length(data)
     dataMat(:, i) = data{i}(:);
 end
-if nargin > 1
-    [pcs, stddev, avg] = pca(dataMat, npcs);
-else
-    [pcs, stddev, avg] = pca(dataMat);
-end
+
+[pcs, stddev, avg] = pca(dataMat, npcs);
+
     
     
