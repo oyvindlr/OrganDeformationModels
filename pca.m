@@ -24,7 +24,7 @@ end
 
 avg = mean(dataMatrix, 2);
 [pcs, S] = svd(dataMatrix - avg, 0);
-stddev = sqrt(diag(S)./(m-1));
+stddev = diag(S)./sqrt(m-1);
 pcs = pcs(:, 1:npcs);
 stddev = stddev(1:npcs);
 

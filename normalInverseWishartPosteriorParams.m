@@ -42,8 +42,7 @@ Dstar = sqrt(1/nustar)*[sqrt(nu)*D sqrt(kappa*J/kappastar)*(m-popmean) S];
 pcs = pcs(:, 1:end-1);
 
 stddev = diag(stddev);
-stddev = sqrt(stddev(1:end-1));
-
+stddev = stddev(1:end-1);
 
 end
 

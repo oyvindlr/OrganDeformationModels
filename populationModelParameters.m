@@ -56,7 +56,7 @@ end
 S = diag(S);
 
 if nargin < 2 || isempty(nComponents)
-    nComponents = size(fullMat, 1) - npatients;
+    nComponents = size(fullMat, 2) - npatients;
 end
 %Remove excess modes
 if size(pcs, 2) > nComponents

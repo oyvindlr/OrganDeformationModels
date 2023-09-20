@@ -1,7 +1,8 @@
 function [popmean, pcs_intra, stddev_intra, pcs_inter, stddev_inter] = variationalBayesModelParameters(patientData, npcs_intrapatient, npcs_interpatient)
-%VARIATIONALBAYESMODELPARAMETERS Summary of this function goes here
+%VARIATIONALBAYESMODELPARAMETERS Calculate parameters/perform training for
+%the variational Bayes organ deformation model
 
-%  function [popmean, pcs_intra, stddev_intra, pcs_inter, stddev_inter] = variationalBayesModelParameters(patientData, npcs_intrapatient, npcs_interpatient)
+% function [popmean, pcs_intra, stddev_intra, pcs_inter, stddev_inter] = variationalBayesModelParameters(patientData, npcs_intrapatient, npcs_interpatient)
 % Calculate the parameters, i.e. the intra-patient and inter-patient 
 % prinicpal components and theirvariance, as well as the population mean,
 % for the variational Bayes deformation model in Rørtveit et al., 2023. 
@@ -27,7 +28,7 @@ function [popmean, pcs_intra, stddev_intra, pcs_inter, stddev_inter] = variation
 %  
 %
 % Output arguments:
-%  popmean: Population mean shape vector
+%  popmean:       Population mean shape vector
 %  pcs_intra:     Matrix of intra-patient principal components. Each column 
 %                 represents one principal component
 %  stddev_intra:  Vector containing the standard deviation of each
