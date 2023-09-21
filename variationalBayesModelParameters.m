@@ -60,7 +60,7 @@ DP = pcs_intra*diag(stddev_intra);
 %Normalization factor C
 C = 0;
 for i = 1:M
-    C = C + 1/length(patients(i).contourPoints);
+    C = C + 1/length(patientData(i).contourPoints);
 end
 C = C/M;
 
@@ -79,13 +79,12 @@ for i = 1:size(W, 2)
 end
 
 pcs_inter = W;
-stddev_inter = diag(sqrt(L));
 if nargin < 2
-    npcs_interpatient = nnz(stddev_inter > 0);
+    npcs_interpatient = nnz(L > 0);
 end
 
 pcs_inter = pcs_inter(:, 1:npcs_interpatient);
-stddev_inter = stddev_inter(1:npcs_interpatient);
+stddev_inter = sqrt(L(1:npcs_interpatient));
    
     
 
