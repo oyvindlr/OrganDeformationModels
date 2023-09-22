@@ -65,7 +65,7 @@ lastmu = inf;
 i = 0;
 s = mean(S, 2);
 
-while norm(mu0-lastmu) > 1e-3 && i < 100000
+while norm(mu0-lastmu) > 1e-4 && i < 100000
     lastmu = mu0;
     i = i + 1;    
     d = 1/((1/dL)+n*(nu+n)*(1/dP));
