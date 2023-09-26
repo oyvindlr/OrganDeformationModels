@@ -55,4 +55,4 @@ displayShape(imean);
 
 %%
 %Create a new patient from the variational model
-[mu, pcs_n, stddev_n] = newPatientDistributionVariational(popmean, pcs_psi, stddev_psi, pcs_lambda, stddev_lambda, nu);
+[mu, pcs_n, stddev_n] = variationalBayesSample(popmean, pcs_psi, stddev_psi, pcs_lambda, stddev_lambda, nu);
