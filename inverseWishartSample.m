@@ -23,7 +23,8 @@ function [pcs_sample, stddev_sample] = inverseWishartSample(psi_pcs, psi_stddev,
 %   cutoff (optional): See description above
 
 
-
+psi_stddev = psi_stddev(psi_stddev > 1e-9);
+psi_pcs = psi_pcs(:, 1:length(psi_stddev));
 invD = psi_pcs*diag(1./psi_stddev);
 
 %Produce a Wishart-sample using the pseudo-inverse of the covariance matrix
