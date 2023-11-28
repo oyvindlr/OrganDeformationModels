@@ -39,6 +39,9 @@ function [mu0, psi_pcs, psi_stddevs, psi_regularization, lambda_pcs, lambda_stdd
 NL = size(DL, 2);
 NP = size(DP, 2);
 
+DP = sqrt(nu-NP-1)*DP;
+dP = (nu-NP-1)*dP;
+
 
 %%% The commented code here and in the loop computes the values of the
 %%% various parameters as they would be if we did not use the
@@ -64,7 +67,7 @@ dPorig = dP;
 lastmu = inf;
 i = 0;
 s = mean(S, 2);
-
+%nu  = nu - NP -1;
 while norm(mu0-lastmu) > 1e-4 && i < 100000
     lastmu = mu0;
     i = i + 1;    
@@ -89,11 +92,15 @@ while norm(mu0-lastmu) > 1e-4 && i < 100000
 %     PsiIfast = dP*eye(P)+D*G*D';
     %%%%%
 end
+%nu = nu + NP + 1;
 
 %PCA
 [psi_pcs, psi_stddevs] = svd(D*(chol(G)'), 0);
-psi_regularization = dP;
+psi_stddevs = diag(psi_stddevs);
+psi_stddevs = 1/sqrt(nu-NP-1)*psi_stddevs;
+psi_regularization = 1/(nu-NP-1)*dP;
 [lambda_pcs, lambda_stddevs] = svd(sqrt(d)*D*(chol(-H)'), 0);
+lambda_stddevs = diag(lambda_stddevs);
 lambda_regularization = d;
 
 

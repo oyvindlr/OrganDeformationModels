@@ -1,4 +1,4 @@
-function [popmean, pcs_psi, stddev_psi, pcs_lambda, stddev_lambda] = variationalBayesModelParameters(patientData, nu, alpha, npcs_intrapatient, npcs_interpatient)
+function [popmean, pcs_psi, stddev_psi, pcs_lambda, stddev_lambda] = variationalBayesModelParameters(patientData, npcs_intrapatient, npcs_interpatient)
 %VARIATIONALBAYESMODELPARAMETERS Calculate parameters/perform training for
 %the variational Bayes organ deformation model
 
@@ -18,10 +18,6 @@ function [popmean, pcs_psi, stddev_psi, pcs_lambda, stddev_lambda] = variational
 %               represented by an N by 3 array, where N is the number of
 %               points, each of which has three spatial coordinates.
 %
-% nu:           "Degrees of freedom" parameter for the inverse Wishart
-%               distribution
-% alpha (optional): Multiplier for the inter-patient uncertaintly Lambda,
-%                   see reference for details.
 %
 %  npcs_intrapatient (optional): Number of intra-patient principal components to
 %               output. If not given, all PCs with nonzero variance are
@@ -100,6 +96,4 @@ if any(stddev_lambda < 0)
     error('Negative eigenvalues found. Data matrix is complex');
 end
 
-stddev_psi = stddev_psi*sqrt(nu);
-stddev_lambda = stddev_lambda*sqrt(alpha);
 end

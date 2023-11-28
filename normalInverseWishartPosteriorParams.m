@@ -1,4 +1,4 @@
-function [patmean, pcs, stddev] = normalInverseWishartPosteriorParams(patientData,popmean, pcs, stddev, kappa, nu)
+function [patmean, pcs, stddev, kappa_p, nu_p] = normalInverseWishartPosteriorParams(patientData,popmean, pcs, stddev, kappa, nu)
 %NORMALINVERSEWISHARTPOSTERIORPARAMS Get the point estimates for the
 %posterior distribution of a normal inverse gamma model
 %
@@ -18,24 +18,32 @@ function [patmean, pcs, stddev] = normalInverseWishartPosteriorParams(patientDat
 %  pcs:     Patient specific posterior principal components
 %  stddev:  Standard deviations of the principal components, in descending
 %           order
+% kappa_p: posterior value of the kappa parameter
+% nu_p: posterior value of the nu parameter
 
 if iscell(patientData)
     patientData = cellToArr(patientData);
 end
 J = size(patientData, 2);
 
-nustar = nu + J;
+p = length(stddev);
 
-kappastar = kappa + J;
+nu_p = nu + J;
+
+kappa_p = kappa + J;
 
 m = mean(patientData, 2);
 
 
-patmean = 1/kappastar*(kappa*popmean + J*m);
+patmean = 1/kappa_p*(kappa*popmean + J*m);
 
 D = pcs*diag(stddev);
 S = patientData-m;
-Dstar = sqrt(1/nustar)*[sqrt(nu)*D sqrt(kappa*J/kappastar)*(m-popmean) S];
+
+expansion = [sqrt(kappa*J/kappa_p)*(m-popmean) S];
+
+
+Dstar = sqrt(1/(nu_p-p-1))*[sqrt(nu-p-1)*D expansion];
 
 [pcs, stddev] = svd(Dstar, 0);
 
