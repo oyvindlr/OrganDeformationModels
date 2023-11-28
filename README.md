@@ -22,7 +22,7 @@ Note 1: The parameter "nu" for the two Bayesian models is interpreted slightly d
 
 Note 2: The "psi" matrix, or scale matrix for the inverse Wishart distribution, is scaled such that it is in the same scale as the covariance matrix; i.e. psi here is the expected value of the inverse Wishart distribution. This is consistent throughout the code, and goes for both the NIW and variational Bayes model. This differs from the standarad representation of psi by a factor of sqrt(1/(nu-P-1)).
 
-Note 3: There are different ways to generate samples from a patient; either through point estimates of mu and R (as in the paper) or through the posterior predictive distribution. The difference is discussed in the document ["On random sampling of patient data from Bayesian models.pdf"](/On random sampling of patient data from Bayesian models.pdf).
+Note 3: There are different ways to generate samples from a patient; either through point estimates of mu and R (as in the paper) or through the posterior predictive distribution. The difference is discussed in the document [On random sampling of patient data from Bayesian models.pdf](https://github.com/oyvindlr/OrganDeformationModels/blob/main/On%20random%20sampling%20of%20patient%20data%20from%20Bayesian%20models.pdf).
 
 Note 4: The code includes functions to estimate the parameters nu and kappa for the NIW-model using maximum likelihood, both when using posterior predictive and point estimates. For the variational Bayes model, no such code is available. 
 
